@@ -67,11 +67,11 @@ class IQN(nn.Module):
         # Network Architecture
         if self.state_dim == 3:
             self.head = nn.Sequential(
-                nn.Conv2d(4, out_channels=32, kernel_size=8, stride=4),
+                nn.Conv2d(4, out_channels=64, kernel_size=8, stride=4),
                 nn.ReLU(),
-                nn.Conv2d(in_channels=32, out_channels=64, kernel_size=4, stride=2),
+                nn.Conv2d(in_channels=64, out_channels=256, kernel_size=4, stride=2),
                 nn.ReLU(),
-                nn.Conv2d(in_channels=64, out_channels=64, kernel_size=3, stride=1),
+                nn.Conv2d(in_channels=256, out_channels=64, kernel_size=3, stride=1),
             )#.apply() #weight init
             self.cos_embedding = nn.Linear(self.n_cos, self.calc_input_layer())
             self.ff_1 = layer(self.calc_input_layer(), layer_size)
